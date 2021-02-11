@@ -5,7 +5,7 @@ Zend Framework Module for storing sessions in Redis.
 
 ## Features
 - Redis SessionSaveHandler support
-- Uses Zend\Cache\StorageFactory
+- Uses Laminas\Cache\StorageFactory
 - Easy session configuration
 
 ## Setup

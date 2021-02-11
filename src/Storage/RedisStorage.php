@@ -12,13 +12,13 @@
 
 namespace MQRedisSessionStorage\Storage;
 
-use Zend\Session\Config\SessionConfig;
-use Zend\Session\SessionManager;
-use Zend\Session\Container;
-use Zend\Session\SaveHandler\Cache;
-use Zend\Session\Validator\HttpUserAgent;
-use Zend\Session\Validator\RemoteAddr;
-use Zend\Cache\StorageFactory;
+use Laminas\Session\Config\SessionConfig;
+use Laminas\Session\SessionManager;
+use Laminas\Session\Container;
+use Laminas\Session\SaveHandler\Cache;
+use Laminas\Session\Validator\HttpUserAgent;
+use Laminas\Session\Validator\RemoteAddr;
+use Laminas\Cache\StorageFactory;
 
 class RedisStorage
 {
@@ -54,7 +54,7 @@ class RedisStorage
 		
 	$manager = new SessionManager();
 		
-	$sessionConfig = new \Zend\Session\Config\SessionConfig();
+	$sessionConfig = new \Laminas\Session\Config\SessionConfig();
         $sessionConfig->setOptions($this->_config['session']);
         
         $manager->setConfig($sessionConfig);        
@@ -66,7 +66,7 @@ class RedisStorage
 	
 	try {
 		$manager->start();
-	} catch(Zend\Cache\Exception\InvalidArgumentException $e) {
+	} catch(Laminas\Cache\Exception\InvalidArgumentException $e) {
 		trigger_error('MQ-RedisSession Error: ' . $e->getMessage(), E_USER_ERROR);	
 	}
 		

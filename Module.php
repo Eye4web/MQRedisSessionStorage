@@ -14,7 +14,7 @@ namespace MQRedisSessionStorage;
 class Module
 {
 
-    public function onBootstrap(\Zend\Mvc\MvcEvent $e)
+    public function onBootstrap(\Laminas\Mvc\MvcEvent $e)
     {
         $config = $e->getApplication()->getConfig();  
 		
@@ -24,7 +24,7 @@ class Module
 			
 			try {
 				$storage->setSessionStorage();
-			} catch(\Zend\Cache\Exception\InvalidArgumentException $e) {
+			} catch(\Laminas\Cache\Exception\InvalidArgumentException $e) {
 				// Todo: Need to do some logging one time over here
 			}
 		}
@@ -38,7 +38,7 @@ class Module
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
+            'Laminas\Loader\ClassMapAutoloader' => array(
                 __DIR__ . '/autoload_classmap.php',
             ),
         );
